@@ -53,5 +53,5 @@
 		<appender-ref ref="FILE"/>
 	</root>
 	<logger name="com.example" level="DEBUG" />
-	<logger name="net.runelite.client.plugins.nogeblink" level="DEBUG" />
+	<logger name="com.osrshool222.nogeblink" level="DEBUG" />
 </configuration>
