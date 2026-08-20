@@ -14,7 +14,7 @@ repositories {
 }
 
 def runeLiteVersion = 'latest.release'
-def pluginMainClass = 'net.runelite.client.plugins.nogeblink.NoGEInventoryBlinkPluginTest'
+def pluginMainClass = 'com.osrshool222.nogeblink.NoGEInventoryBlinkPluginTest'
 
 dependencies {
 	compileOnly group: 'net.runelite', name:'client', version: runeLiteVersion
@@ -27,7 +27,7 @@ dependencies {
 	testImplementation group: 'net.runelite', name:'jshell', version: runeLiteVersion
 }
 
-group = 'net.runelite.client.plugins.nogeblink'
+group = 'com.osrshool222.nogeblink'
 
 tasks.withType(JavaCompile).configureEach {
 	options.encoding = 'UTF-8'

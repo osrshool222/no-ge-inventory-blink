@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.nogeblink;
+package com.osrshool222.nogeblink;
 
 import com.google.inject.Provides;
 import javax.inject.Inject;

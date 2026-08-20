@@ -1,4 +1,4 @@
-package net.runelite.client.plugins.nogeblink;
+package com.osrshool222.nogeblink;
 
 import net.runelite.client.RuneLite;
 import net.runelite.client.externalplugins.ExternalPluginManager;
