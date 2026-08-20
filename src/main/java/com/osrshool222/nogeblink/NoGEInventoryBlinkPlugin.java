@@ -4,11 +4,11 @@ import com.google.inject.Provides;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
+import net.runelite.api.events.ClientTick;
 import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
-import net.runelite.api.events.ClientTick;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 
@@ -55,27 +55,21 @@ public class NoGEInventoryBlinkPlugin extends Plugin
 			return;
 		}
 
-		if (config.hideGlow())
+		// The pulsing yellow glow around the inventory grid in the GE window
+		// (GeOffersSide.GLOW) is animated by the vanilla scripts and makes the
+		// inventory look like it is blinking. Hiding it stops the blink.
+		Widget glow = client.getWidget(InterfaceID.GeOffersSide.GLOW);
+		if (glow != null && !glow.isSelfHidden())
 		{
-			// The pulsing yellow glow around the inventory grid in the GE window
-			// (GeOffersSide.GLOW) is animated by the vanilla scripts and makes
-			// the inventory look like it is blinking. Hiding it stops the blink.
-			Widget glow = client.getWidget(InterfaceID.GeOffersSide.GLOW);
-			if (glow != null && !glow.isSelfHidden())
-			{
-				glow.setHidden(true);
-				glow.setOpacity(255);
-			}
+			glow.setHidden(true);
+			glow.setOpacity(255);
 		}
 
-		if (config.fixInventoryOpacity())
+		// Safety net: keep the main inventory item layer fully opaque.
+		Widget inventory = client.getWidget(InterfaceID.Inventory.ITEMS);
+		if (inventory != null && inventory.getOpacity() != 0)
 		{
-			// Safety net: keep the main inventory item layer fully opaque.
-			Widget inventory = client.getWidget(InterfaceID.Inventory.ITEMS);
-			if (inventory != null && inventory.getOpacity() != 0)
-			{
-				inventory.setOpacity(0);
-			}
+			inventory.setOpacity(0);
 		}
 	}
 

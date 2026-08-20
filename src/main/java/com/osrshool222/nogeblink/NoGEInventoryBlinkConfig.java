@@ -16,24 +16,4 @@ public interface NoGEInventoryBlinkConfig extends Config
 	{
 		return true;
 	}
-
-	@ConfigItem(
-		keyName = "hideGlow",
-		name = "Hide GE glow",
-		description = "Hides the pulsing yellow glow/border around the inventory grid in the GE window"
-	)
-	default boolean hideGlow()
-	{
-		return true;
-	}
-
-	@ConfigItem(
-		keyName = "fixInventoryOpacity",
-		name = "Fix inventory opacity",
-		description = "Keeps the main inventory item layer fully opaque while the GE window is open"
-	)
-	default boolean fixInventoryOpacity()
-	{
-		return true;
-	}
 }
